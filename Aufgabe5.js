@@ -27,4 +27,4 @@ var Server;
         _response.end();
     }
 })(Server || (Server = {}));
-//# sourceMappingURL=Server.js.map
+//# sourceMappingURL=Aufgabe5.js.map
