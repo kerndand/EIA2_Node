@@ -1,14 +1,14 @@
 {
-	"name" : "Servertest",
+	"name" : "AufgabenEIA2",
 	"version" : "1.0.0",
-	"description" : "First Server Test",
-	"author" : "Jirka",
+	"description" : "Aufgabe5",
+	"author" : "Daniel Kern",
 	"main" : "Server.js",
 	"scripts" : {
 		"start" : "node Server.js"
 	},
 	"engines" : {
-		"node" : "6.11.1"
+		"node" : "9.11.1"
 	},
 	"dependencies" : {
 	}
