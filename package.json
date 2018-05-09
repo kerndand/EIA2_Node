@@ -1,7 +1,7 @@
 {
 	"name" : "AufgabenEIA2",
 	"version" : "1.0.0",
-	"description" : "Aufgabe5",
+	"description" : "First Server",
 	"author" : "Daniel Kern",
 	"main" : "Server.js",
 	"scripts" : {
