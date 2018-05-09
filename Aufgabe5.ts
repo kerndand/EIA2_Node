@@ -8,7 +8,7 @@ namespace Server {
 
     let port: number = process.env.PORT;
     if (port == undefined)
-        port = 8100;
+        port = 8200;
 
     let server: Http.Server = Http.createServer();
     server.addListener("listening", handleListen);
