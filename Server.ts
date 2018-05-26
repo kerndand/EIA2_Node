@@ -21,6 +21,7 @@ namespace Server {
     interface Studis {
         [matrikel: string]: Studi;
     }
+    
 
     // Homogenes assoziatives Array zur Speicherung einer Person unter der Matrikelnummer
     let studiHomoAssoc: Studis = {};
@@ -28,14 +29,12 @@ namespace Server {
     if (port == undefined)
         port = 8200;
 
-    let server: Http.Server = Http.createServer();
-    server.addListener("listening", handleListen);
+    let server: Http.Server = Http.createServer((_request: Http.IncomingMessage, _response: Http.ServerResponse) => {
+        _response.setHeader("content-type", "text/html; charset=utf-8");
+        _response.setHeader("Access-Control-Allow-Origin", "*");
+    });
     server.addListener("request", handleRequest);
     server.listen(port);
-
-    function handleListen(): void {
-        console.log("Ich höre?");
-    }
 
     function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {
         console.log("Ich höre Stimmen!");
@@ -44,22 +43,26 @@ namespace Server {
         if (query["command"] ) {
             switch (query["command"] ) {
                 case "insert": 
-                    insert();
+                    insert(query, _response);
                     break;
                  
                 case "refresh":
-                    refresh();
+                    refresh(_response);
                     break;
                     
-//                case "search":
-//                    search();
-//                    break;
+                case "search":
+                    search(query, _response);
+                    break;
                
                 default: 
                     error();
             } 
-        }      
-        function insert(): void {
+        }
+        _response.end();    
+        
+    }      
+        
+        function insert(query: AssocStringString, _response: Http.ServerResponse): void {
             let obj: Studi = JSON.parse(query["data"]);
             let _name: string = obj.name;
             let _firstname: string = obj.firstname;  
@@ -77,30 +80,36 @@ namespace Server {
                 studiengang: _studiengang
             };  
             studiHomoAssoc[matrikel] = studi;
-    
-            _response.setHeader("Access-Control-Allow-Origin", "*");
             _response.write("Daten empfangen");
-            _response.end();
             }
 
-        function refresh(): void {
+        function refresh(_response: Http.ServerResponse): void {
             console.log(studiHomoAssoc);
             for (let matrikel in studiHomoAssoc) {  
             let studi: Studi = studiHomoAssoc[matrikel];
             let line: string = matrikel + ": ";
             line += studi.studiengang + ", " + studi.name + ", " + studi.firstname + ", " + studi.age + " Jahre ";
-            line += studi.gender ? "(M)" : "(F)";
-            console.log(line);
-            let data: string = JSON.stringify(line);
-            _response.setHeader("Access-Control-Allow-Origin", "*");
-            _response.write(data);
-            _response.end();
+            line += studi.gender ? "(M)" : "(F)"; 
+            _response.write(line + "\n");                                          
             }
-       } 
+        } 
+        
+        function search(query: AssocStringString, _response: Http.ServerResponse): void {
+            let studi: Studi = studiHomoAssoc[query["searchFor"]];
+            if (studi) {
+                let line: string = query["searchFor"] + ": ";
+                line += studi.studiengang + ", " + studi.name + ", " + studi.firstname + ", " + studi.age + " Jahre ";
+                line += studi.gender ? "(M)" : "(F)";
+                _response.write(line);
+            } else {
+                _response.write("No Match");    
+            }    
+        }
+        
         function error(): void {
             alert("Error"); 
         }
 
         
-    }
+    
 }
