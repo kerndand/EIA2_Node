@@ -29,6 +29,7 @@ function handleRequest(_request, _response) {
                 error();
         }
     }
+    _response.end();
 }
 function insert(query, _response) {
     let obj = JSON.parse(query["data"]);

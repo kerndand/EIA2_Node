@@ -34,7 +34,8 @@ import * as Database from "./Database";
                 default: 
                     error();
             } 
-        } 
+        }
+    _response.end();
     }      
         
         function insert(query: AssocStringString, _response: Http.ServerResponse): void {
