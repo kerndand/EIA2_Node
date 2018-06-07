@@ -48,15 +48,6 @@ export function findAll(_callback: Function): void {
     }
 }
 
-export function findStudent(_searchedMatrikel: number, _callback: Function): void {
-    var cursor: Mongo.Cursor = students.find({"matrikel": _searchedMatrikel});
-    cursor.toArray(prepareAnswer);
-
-    function prepareAnswer(_e: Mongo.MongoError, studentArray: Studi[]): void {
-        if (_e)
-            _callback("Error" + _e);
-        else
-            _callback(JSON.stringify(studentArray)); 
-            
-    }
+export function findStudent(_searchedMatrikel: number, _callback: Function): void {    
+    _callback(students.findOne({"matrikel": _searchedMatrikel}));
 }
