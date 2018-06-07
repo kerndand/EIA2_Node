@@ -52,7 +52,7 @@ function refresh(_response) {
     Database.findAll(function (studi) {
         let line = studi.matrikel + ": ";
         line += studi.studiengang + ", " + studi.name + ", " + studi.firstname + ", " + studi.age + " Jahre ";
-        line += studi.gender ? "(M)" : "(F)";
+        line += studi.gender ? "(M)" : "(F)" + "\n";
         respond(_response, line);
     });
 }

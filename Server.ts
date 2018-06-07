@@ -59,12 +59,12 @@ import * as Database from "./Database";
 
         function refresh(_response: Http.ServerResponse): void {
             Database.findAll(function(studi: Studi): void {
-               
-                let line: string = studi.matrikel + ": ";
-                line += studi.studiengang + ", " + studi.name + ", " + studi.firstname + ", " + studi.age + " Jahre ";
-                line += studi.gender ? "(M)" : "(F)";            
-                
-                respond(_response, line);
+                 
+            let line: string = studi.matrikel + ": ";
+            line += studi.studiengang + ", " + studi.name + ", " + studi.firstname + ", " + studi.age + " Jahre ";
+            line += studi.gender ? "(M)" : "(F)" + "\n"; 
+                                  
+            respond(_response, line);
             });
             
                                           
