@@ -56,7 +56,6 @@ export function findStudent(_searchedMatrikel: number, _callback: Function): voi
         if (_e)
             _callback("Error" + _e);
         else
-            _callback(JSON.stringify(studentArray));
-            
+            _callback(JSON.stringify(studentArray));     
     }
 }
