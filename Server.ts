@@ -62,14 +62,14 @@ import * as Database from "./Database";
             }
 
         function refresh(_response: Http.ServerResponse): void {
-            console.log(studiHomoAssoc);
-            for (let matrikel in studiHomoAssoc) {  
-            let studi: Studi = studiHomoAssoc[matrikel];
-            let line: string = matrikel + ": ";
-            line += studi.studiengang + ", " + studi.name + ", " + studi.firstname + ", " + studi.age + " Jahre ";
-            line += studi.gender ? "(M)" : "(F)"; 
-            _response.write(line + "\n");                                          
-            }
+            Database.findAll(function(json: string): void {
+                _response.write(json);
+            });
+//            let line: string = matrikel + ": ";
+//            line += studi.studiengang + ", " + studi.name + ", " + studi.firstname + ", " + studi.age + " Jahre ";
+//            line += studi.gender ? "(M)" : "(F)"; 
+//            _response.write(line + "\n");                                          
+            
         } 
         
         function search(query: AssocStringString, _response: Http.ServerResponse): void {
