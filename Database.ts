@@ -43,7 +43,7 @@ export function findAll(_callback: Function): void {
         if (_e)
             _callback("Error" + _e);
         else
-            _callback(JSON.stringify(studentArray));
+            _callback(studentArray);
             
     }
 }
