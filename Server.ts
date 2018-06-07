@@ -12,7 +12,9 @@ import * as Database from "./Database";
     server.listen(port);
 
     function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {
+        
         _response.setHeader("Access-Control-Allow-Origin", "*");
+        
         let query: AssocStringString = Url.parse(_request.url, true).query;
         console.log(query["command"]);
         if (query["command"] ) {
