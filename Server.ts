@@ -2,10 +2,7 @@ import * as Http from "http";
 import * as Url from "url";
 import * as Database from "./Database";
 
-// IMPORT HAT BEI MIR NICHT FUNKTIONIERT
-namespace Server {
 
-   
     let port: number = process.env.PORT;
     if (port == undefined)
         port = 8200;
@@ -90,4 +87,4 @@ namespace Server {
         function error(): void {
             alert("Error"); 
         }
-    }
+    
