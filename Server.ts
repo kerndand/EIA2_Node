@@ -62,6 +62,7 @@ import * as Database from "./Database";
             Database.findAll(function(json: string): void {
                 respond(_response, json);
             });
+            
 //            let line: string = matrikel + ": ";
 //            line += studi.studiengang + ", " + studi.name + ", " + studi.firstname + ", " + studi.age + " Jahre ";
 //            line += studi.gender ? "(M)" : "(F)"; 
