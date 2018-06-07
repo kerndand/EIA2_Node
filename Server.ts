@@ -7,10 +7,7 @@ import * as Database from "./Database";
     if (port == undefined)
         port = 8200;
 
-    let server: Http.Server = Http.createServer((_request: Http.IncomingMessage, _response: Http.ServerResponse) => {
-        _response.setHeader("content-type", "text/html; charset=utf-8");
-        _response.setHeader("Access-Control-Allow-Origin", "*");
-    });
+    let server: Http.Server = Http.createServer();
     server.addListener("request", handleRequest);
     server.listen(port);
 
@@ -58,7 +55,7 @@ import * as Database from "./Database";
                 studiengang: _studiengang
             };  
             Database.insert(studi);
-            _response.write("Daten empfangen");
+            respond(_response, "Daten empfangen");
             }
 
         function refresh(_response: Http.ServerResponse): void {
@@ -89,5 +86,7 @@ import * as Database from "./Database";
         }
     
 function respond(_response: Http.ServerResponse, _text: string): void {
+    _response.setHeader("content-type", "text/html; charset=utf-8");
+    _response.setHeader("Access-Control-Allow-Origin", "*");
     _response.write(_text);
 }

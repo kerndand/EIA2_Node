@@ -5,10 +5,7 @@ const Database = require("./Database");
 let port = process.env.PORT;
 if (port == undefined)
     port = 8200;
-let server = Http.createServer((_request, _response) => {
-    _response.setHeader("content-type", "text/html; charset=utf-8");
-    _response.setHeader("Access-Control-Allow-Origin", "*");
-});
+let server = Http.createServer();
 server.addListener("request", handleRequest);
 server.listen(port);
 function handleRequest(_request, _response) {
@@ -50,7 +47,7 @@ function insert(query, _response) {
         studiengang: _studiengang
     };
     Database.insert(studi);
-    _response.write("Daten empfangen");
+    respond(_response, "Daten empfangen");
 }
 function refresh(_response) {
     Database.findAll(function (json) {
@@ -77,6 +74,8 @@ function error() {
     alert("Error");
 }
 function respond(_response, _text) {
+    _response.setHeader("content-type", "text/html; charset=utf-8");
+    _response.setHeader("Access-Control-Allow-Origin", "*");
     _response.write(_text);
 }
 //# sourceMappingURL=Server.js.map
