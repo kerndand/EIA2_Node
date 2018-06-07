@@ -27,7 +27,6 @@ function handleRequest(_request, _response) {
                 error();
         }
     }
-    _response.end();
 }
 function insert(query, _response) {
     let obj = JSON.parse(query["data"]);
@@ -77,5 +76,6 @@ function respond(_response, _text) {
     _response.setHeader("content-type", "text/html; charset=utf-8");
     _response.setHeader("Access-Control-Allow-Origin", "*");
     _response.write(_text);
+    _response.end();
 }
 //# sourceMappingURL=Server.js.map

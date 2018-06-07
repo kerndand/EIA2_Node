@@ -33,7 +33,6 @@ import * as Database from "./Database";
                     error();
             } 
         }
-        _response.end();    
         
     }      
         
@@ -90,4 +89,5 @@ function respond(_response: Http.ServerResponse, _text: string): void {
     _response.setHeader("content-type", "text/html; charset=utf-8");
     _response.setHeader("Access-Control-Allow-Origin", "*");
     _response.write(_text);
+    _response.end();
 }
