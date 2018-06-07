@@ -33,8 +33,7 @@ import * as Database from "./Database";
                     error();
             } 
         } 
-    }    
-  
+    }      
         
         function insert(query: AssocStringString, _response: Http.ServerResponse): void {
             let obj: Studi = JSON.parse(query["data"]);
@@ -61,9 +60,9 @@ import * as Database from "./Database";
             Database.findAll(function(studi: Studi[]): void {
             let line: string;
             for (let i: number = 0; i < studi.length; i++) {     
-            line += studi[i].matrikel + ": ";
-            line += studi[i].studiengang + ", " + studi[i].name + ", " + studi[i].firstname + ", " + studi[i].age + " Jahre ";
-            line += studi[i].gender ? "(M)" : "(F)"; 
+                line += studi[i].matrikel + ": ";
+                line += studi[i].studiengang + ", " + studi[i].name + ", " + studi[i].firstname + ", " + studi[i].age + " Jahre ";
+                line += studi[i].gender ? "(M)" : "(F)"; 
                 
             }  
             respond(_response, line);
