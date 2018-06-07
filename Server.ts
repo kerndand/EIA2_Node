@@ -7,14 +7,12 @@ import * as Database from "./Database";
     if (port == undefined)
         port = 8200;
 
-    let server: Http.Server = Http.createServer((_request: Http.IncomingMessage, _response: Http.ServerResponse) => {
-        _response.setHeader("content-type", "text/html; charset=utf-8");
-        _response.setHeader("Access-Control-Allow-Origin", "*");
-    });
+    let server: Http.Server = Http.createServer();
     server.addListener("request", handleRequest);
     server.listen(port);
 
-    function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {        
+    function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {
+        console.log("Ich höre Stimmen!");
         let query: AssocStringString = Url.parse(_request.url, true).query;
         console.log(query["command"]);
         if (query["command"] ) {
@@ -35,7 +33,7 @@ import * as Database from "./Database";
                     error();
             } 
         }
-    _response.end();
+        
     }      
         
         function insert(query: AssocStringString, _response: Http.ServerResponse): void {
@@ -56,19 +54,23 @@ import * as Database from "./Database";
                 studiengang: _studiengang
             };  
             Database.insert(studi);
-            _response.write("Daten empfangen");
+            respond(_response, "Daten empfangen");
             }
 
         function refresh(_response: Http.ServerResponse): void {
-            Database.findAll(function(studi: Studi2[]): void {
+            Database.findAll(function(studi: Studi[]): void {
             let line: string;
             for (let i: number = 0; i < studi.length; i++) {     
-            line += "(" + studi[i]._id + ")" + studi[i].matrikel + ": ";
+            line += studi[i].matrikel + ": ";
             line += studi[i].studiengang + ", " + studi[i].name + ", " + studi[i].firstname + ", " + studi[i].age + " Jahre ";
             line += studi[i].gender ? "(M)" : "(F)"; 
             }  
-            _response.write(line);
-            });                       
+            
+            respond(_response, line);
+            });
+            
+                                          
+            
         } 
         
         function search(query: AssocStringString, _response: Http.ServerResponse): void {
@@ -87,4 +89,9 @@ import * as Database from "./Database";
             alert("Error"); 
         }
     
-
+function respond(_response: Http.ServerResponse, _text: string): void {
+    _response.setHeader("content-type", "text/html; charset=utf-8");
+    _response.setHeader("Access-Control-Allow-Origin", "*");
+    _response.write(_text);
+    _response.end();
+}
