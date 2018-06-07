@@ -57,9 +57,8 @@ import * as Database from "./Database";
             }
 
         function refresh(_response: Http.ServerResponse): void {
-            Database.findAll(function(studentArray: Studi[]): void {
-            let array: string = studentArray.toString();    
-            respond(_response, array );
+            Database.findAll(function(json: string): void {   
+            respond(_response, json);
             });
         } 
         

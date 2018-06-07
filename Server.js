@@ -49,9 +49,8 @@ function insert(query, _response) {
     respond(_response, "Daten empfangen");
 }
 function refresh(_response) {
-    Database.findAll(function (studentArray) {
-        let array = studentArray.toString();
-        respond(_response, array);
+    Database.findAll(function (json) {
+        respond(_response, json);
     });
 }
 //        function search(query: AssocStringString, _response: Http.ServerResponse): void {
