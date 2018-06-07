@@ -57,12 +57,8 @@ import * as Database from "./Database";
             }
 
         function refresh(_response: Http.ServerResponse): void {
-            Database.findAll(function(json: any): void {
-          
-            let line: string;
-            line += json.matrikel + ": " + json.name + ", " + json.firstname + ", " + json.age + ", " + json.studiengang + ", ";
-            line += json.gender ? "(M)" : "(F)";
-            respond(_response, line);
+            Database.findAll(function(json: string): void {
+            respond(_response, json);
             });
         } 
         
