@@ -38,7 +38,7 @@ function handleInsert(_e: Mongo.MongoError): void {
 
 
 export function findAll(_callback: Function): void {
-    var cursor: Mongo.Cursor = students.find("matrikel", "studiengang", );
+    var cursor: Mongo.Cursor = students.find();
     cursor.toArray(prepareAnswer);
 
     function prepareAnswer(_e: Mongo.MongoError, studentArray: Studi[]): void {

@@ -17,6 +17,7 @@ import * as Database from "./Database";
         console.log(query["command"]);
         if (query["command"] ) {
             switch (query["command"] ) {
+                
                 case "insert": 
                     insert(query, _response);
                     break;
