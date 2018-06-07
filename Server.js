@@ -54,7 +54,7 @@ function refresh(_response) {
         for (let i = 0; i < studi.length; i++) {
             line += studi[i].matrikel + ": ";
             line += studi[i].studiengang + ", " + studi[i].name + ", " + studi[i].firstname + ", " + studi[i].age + " Jahre ";
-            line += studi[i].gender ? "(M)" : "(F)";
+            line += studi[i].gender ? "(M)" : "(F)" + "\n";
         }
         respond(_response, line);
     });
