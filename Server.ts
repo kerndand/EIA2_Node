@@ -22,6 +22,7 @@ import * as Database from "./Database";
                     insert(query, _response);
                     break;
                  
+                    
                 case "refresh":
                     refresh(_response);
                     break;

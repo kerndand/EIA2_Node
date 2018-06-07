@@ -1,4 +1,3 @@
-
 import * as Mongo from "mongodb";
 console.log("Database starting");
 
@@ -6,7 +5,6 @@ let databaseURL: string = "mongodb://localhost:27017";
 let databaseName: string = "Test";
 let db: Mongo.Db;
 let students: Mongo.Collection;
-
 // wenn wir auf heroku sind...
 if (process.env.NODE_ENV == "production") {
     //    databaseURL = "mongodb://username:password@hostname:port/database";
