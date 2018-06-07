@@ -58,6 +58,11 @@ import * as Database from "./Database";
 
         function refresh(_response: Http.ServerResponse): void {
             Database.findAll(function(json: string): void {
+            var obj: Studi = JSON.parse(json);
+             
+            let line: string;
+            line += obj.matrikel.toString() + ": " + obj.name + ", " + obj.firstname + ", " + obj.age + ", " + obj.studiengang + ", ";
+            line += obj.gender ? "(M)" : "(F)"; 
             respond(_response, json);
             });
         } 

@@ -50,6 +50,10 @@ function insert(query, _response) {
 }
 function refresh(_response) {
     Database.findAll(function (json) {
+        var obj = JSON.parse(json);
+        let line;
+        line += obj.matrikel.toString() + ": " + obj.name + ", " + obj.firstname + ", " + obj.age + ", " + obj.studiengang + ", ";
+        line += obj.gender ? "(M)" : "(F)";
         respond(_response, json);
     });
 }
