@@ -5,7 +5,10 @@ const Database = require("./Database");
 let port = process.env.PORT;
 if (port == undefined)
     port = 8200;
-let server = Http.createServer();
+let server = Http.createServer((_request, _response) => {
+    _response.setHeader("content-type", "text/html; charset=utf-8");
+    _response.setHeader("Access-Control-Allow-Origin", "*");
+});
 server.addListener("request", handleRequest);
 server.listen(port);
 function handleRequest(_request, _response) {
@@ -75,7 +78,6 @@ function error() {
     alert("Error");
 }
 function respond(_response, _text) {
-    _response.setHeader("Access-Control-Allow-Origin", "*");
     _response.setHeader("content-type", "text/html; charset=utf-8");
     _response.write(_text);
     _response.end();
