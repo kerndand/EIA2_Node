@@ -53,7 +53,6 @@ function refresh(_response) {
         let line = studi.matrikel + ": ";
         line += studi.studiengang + ", " + studi.name + ", " + studi.firstname + ", " + studi.age + " Jahre ";
         line += studi.gender ? "(M)" : "(F)";
-        _response.write(line + "\n");
         respond(_response, line);
     });
 }

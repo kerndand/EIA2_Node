@@ -62,8 +62,7 @@ import * as Database from "./Database";
                
                 let line: string = studi.matrikel + ": ";
                 line += studi.studiengang + ", " + studi.name + ", " + studi.firstname + ", " + studi.age + " Jahre ";
-                line += studi.gender ? "(M)" : "(F)"; 
-                _response.write(line + "\n");            
+                line += studi.gender ? "(M)" : "(F)";            
                 
                 respond(_response, line);
             });
