@@ -1,5 +1,6 @@
 import * as Http from "http";
 import * as Url from "url";
+import * as Database from "./Database";
 
 // IMPORT HAT BEI MIR NICHT FUNKTIONIERT
 namespace Server {
@@ -79,7 +80,7 @@ namespace Server {
                 gender: _gender,
                 studiengang: _studiengang
             };  
-            studiHomoAssoc[matrikel] = studi;
+            Database.insert(studi);
             _response.write("Daten empfangen");
             }
 
@@ -109,7 +110,4 @@ namespace Server {
         function error(): void {
             alert("Error"); 
         }
-
-        
-    
 }

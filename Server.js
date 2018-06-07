@@ -1,6 +1,7 @@
 "use strict";
 const Http = require("http");
 const Url = require("url");
+const Database = require("./Database");
 // IMPORT HAT BEI MIR NICHT FUNKTIONIERT
 var Server;
 (function (Server) {
@@ -53,7 +54,7 @@ var Server;
             gender: _gender,
             studiengang: _studiengang
         };
-        studiHomoAssoc[matrikel] = studi;
+        Database.insert(studi);
         _response.write("Daten empfangen");
     }
     function refresh(_response) {
