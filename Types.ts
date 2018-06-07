@@ -12,6 +12,15 @@
         studiengang: string;
     }
 
+    interface Studi2 {
+        _id: string;
+        name: string;
+        firstname: string;
+        matrikel: number;
+        age: number;
+        gender: boolean;
+        studiengang: string;
+    }
     // Struktur des homogenen assoziativen Arrays, bei dem ein Datensatz der Matrikelnummer zugeordnet ist
      interface Studis {         [matrikel: string]: Studi;
     }
