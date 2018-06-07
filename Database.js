@@ -40,4 +40,15 @@ function findAll(_callback) {
     }
 }
 exports.findAll = findAll;
+function findStudent(_searchedMatrikel, _callback) {
+    var cursor = students.find({ matrikel: _searchedMatrikel });
+    cursor.toArray(prepareAnswer);
+    function prepareAnswer(_e, studentArray) {
+        if (_e)
+            _callback("Error" + _e);
+        else
+            _callback(JSON.stringify(studentArray));
+    }
+}
+exports.findStudent = findStudent;
 //# sourceMappingURL=Database.js.map

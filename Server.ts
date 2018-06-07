@@ -26,7 +26,7 @@ import * as Database from "./Database";
                     break;
                     
                 case "search":
-//                    search(query, _response);
+                    search(query, _response);
                     break;
                
                 default: 
@@ -57,22 +57,17 @@ import * as Database from "./Database";
             }
 
         function refresh(_response: Http.ServerResponse): void {
-            Database.findAll(function(json: string): void {   
+            Database.findAll(function(json: string): void {
             respond(_response, json);
             });
         } 
         
-//        function search(query: AssocStringString, _response: Http.ServerResponse): void {
-//            let studi: Studi = studiHomoAssoc[query["searchFor"]];
-//            if (studi) {
-//                let line: string = query["searchFor"] + ": ";
-//                line += studi.studiengang + ", " + studi.name + ", " + studi.firstname + ", " + studi.age + " Jahre ";
-//                line += studi.gender ? "(M)" : "(F)";
-//                _response.write(line);
-//            } else {
-//                _response.write("No Match");    
-//            }    
-//        }
+        function search(query: AssocStringString, _response: Http.ServerResponse): void {
+            let searchedMatrikel: number = parseInt(query["searchedFor"]);
+            Database.findStudent(searchedMatrikel, function (json: string): void {
+            respond(_response, json);    
+            });
+        }
         
         function error(): void {
             alert("Error"); 
