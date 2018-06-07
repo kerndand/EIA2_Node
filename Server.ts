@@ -57,16 +57,8 @@ import * as Database from "./Database";
             }
 
         function refresh(_response: Http.ServerResponse): void {
-            Database.findAll(function(studi: StudiID[]): void {
-            let line: string;
-            for (let i: number = 0; i < studi.length; i++) {
-                line += studi[i]._id;     
-                line += studi[i].matrikel + ": ";
-                line += studi[i].studiengang + ", " + studi[i].name + ", " + studi[i].firstname + ", " + studi[i].age + " Jahre ";
-                line += studi[i].gender ? "(M)" : "(F)"; 
-                
-            }  
-            respond(_response, line);
+            Database.findAll(function(json: string): void {
+            respond(_response, json);
             });
         } 
         
