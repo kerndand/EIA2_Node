@@ -50,7 +50,17 @@ function insert(query, _response) {
 }
 function refresh(_response) {
     Database.findAll(function (json) {
-        respond(_response, json);
+        let obj = JSON.parse(json);
+        let _name = obj.name;
+        let _firstname = obj.firstname;
+        let matrikel = obj.matrikel.toString();
+        let _age = obj.age;
+        let _gender = obj.gender;
+        let _studiengang = obj.studiengang;
+        let line;
+        line += matrikel + ": " + _name + ", " + _firstname + ", " + _age + ", " + _studiengang + ", ";
+        line += _gender ? "(M)" : "(F)";
+        respond(_response, line);
     });
 }
 //        function search(query: AssocStringString, _response: Http.ServerResponse): void {
