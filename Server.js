@@ -5,14 +5,11 @@ const Database = require("./Database");
 let port = process.env.PORT;
 if (port == undefined)
     port = 8200;
-let server = Http.createServer((_request, _response) => {
-    _response.setHeader("content-type", "text/html; charset=utf-8");
-    _response.setHeader("Access-Control-Allow-Origin", "*");
-});
+let server = Http.createServer();
 server.addListener("request", handleRequest);
 server.listen(port);
 function handleRequest(_request, _response) {
-    console.log("Ich höre Stimmen!");
+    _response.setHeader("Access-Control-Allow-Origin", "*");
     let query = Url.parse(_request.url, true).query;
     console.log(query["command"]);
     if (query["command"]) {
@@ -79,6 +76,7 @@ function error() {
 }
 function respond(_response, _text) {
     _response.setHeader("content-type", "text/html; charset=utf-8");
+    _response.setHeader("Access-Control-Allow-Origin", "*");
     _response.write(_text);
     _response.end();
 }
