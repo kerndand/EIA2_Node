@@ -36,9 +36,7 @@ function findAll(_callback) {
         if (_e)
             _callback("Error" + _e);
         else
-            for (let i = 0; i < studentArray.length; i++) {
-                _callback(studentArray[i]);
-            }
+            _callback(studentArray);
     }
 }
 exports.findAll = findAll;
