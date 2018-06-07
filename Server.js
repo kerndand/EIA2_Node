@@ -49,13 +49,13 @@ function insert(query, _response) {
     respond(_response, "Daten empfangen");
 }
 function refresh(_response) {
-    Database.findAll(function (json) {
-        respond(_response, json);
+    Database.findAll(function (studi) {
+        let line = studi.matrikel + ": ";
+        line += studi.studiengang + ", " + studi.name + ", " + studi.firstname + ", " + studi.age + " Jahre ";
+        line += studi.gender ? "(M)" : "(F)";
+        ;
+        respond(_response, line + "\n");
     });
-    //            let line: string = matrikel + ": ";
-    //            line += studi.studiengang + ", " + studi.name + ", " + studi.firstname + ", " + studi.age + " Jahre ";
-    //            line += studi.gender ? "(M)" : "(F)"; 
-    //            _response.write(line + "\n");                                          
 }
 function search(query, _response) {
     let studi = studiHomoAssoc[query["searchFor"]];

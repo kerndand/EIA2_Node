@@ -58,14 +58,14 @@ import * as Database from "./Database";
             }
 
         function refresh(_response: Http.ServerResponse): void {
-            Database.findAll(function(json: string): void {
-                respond(_response, json);
+            Database.findAll(function(studi: Studi): void {
+                let line: string = studi.matrikel + ": ";
+                line += studi.studiengang + ", " + studi.name + ", " + studi.firstname + ", " + studi.age + " Jahre ";
+                line += studi.gender ? "(M)" : "(F)"; ;   
+                respond(_response, line + "\n");
             });
             
-//            let line: string = matrikel + ": ";
-//            line += studi.studiengang + ", " + studi.name + ", " + studi.firstname + ", " + studi.age + " Jahre ";
-//            line += studi.gender ? "(M)" : "(F)"; 
-//            _response.write(line + "\n");                                          
+                                                   
             
         } 
         
