@@ -41,7 +41,7 @@ function findAll(_callback) {
 }
 exports.findAll = findAll;
 function findStudent(_searchedMatrikel, _callback) {
-    var cursor = students.find({ matrikel: _searchedMatrikel });
+    var cursor = students.find({ "matrikel": _searchedMatrikel });
     cursor.toArray(prepareAnswer);
     function prepareAnswer(_e, studentArray) {
         if (_e)
