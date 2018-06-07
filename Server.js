@@ -5,11 +5,13 @@ const Database = require("./Database");
 let port = process.env.PORT;
 if (port == undefined)
     port = 8200;
-let server = Http.createServer();
+let server = Http.createServer((_request, _response) => {
+    _response.setHeader("content-type", "text/html; charset=utf-8");
+    _response.setHeader("Access-Control-Allow-Origin", "*");
+});
 server.addListener("request", handleRequest);
 server.listen(port);
 function handleRequest(_request, _response) {
-    _response.setHeader("Access-Control-Allow-Origin", "*");
     let query = Url.parse(_request.url, true).query;
     console.log(query["command"]);
     if (query["command"]) {
@@ -46,7 +48,7 @@ function insert(query, _response) {
         studiengang: _studiengang
     };
     Database.insert(studi);
-    respond(_response, "Daten empfangen");
+    _response.write("Daten empfangen");
 }
 function refresh(_response) {
     Database.findAll(function (studi) {
@@ -56,7 +58,7 @@ function refresh(_response) {
             line += studi[i].studiengang + ", " + studi[i].name + ", " + studi[i].firstname + ", " + studi[i].age + " Jahre ";
             line += studi[i].gender ? "(M)" : "(F)";
         }
-        respond(_response, line);
+        _response.write(line);
     });
 }
 function search(query, _response) {
@@ -73,11 +75,5 @@ function search(query, _response) {
 }
 function error() {
     alert("Error");
-}
-function respond(_response, _text) {
-    _response.setHeader("content-type", "text/html; charset=utf-8");
-    _response.setHeader("Access-Control-Allow-Origin", "*");
-    _response.write(_text);
-    _response.end();
 }
 //# sourceMappingURL=Server.js.map
