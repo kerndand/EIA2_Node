@@ -1,8 +1,6 @@
 import * as Http from "http";
 import * as Url from "url";
 import * as Database from "./Database";
-
-
     let port: number = process.env.PORT;
     if (port == undefined)
         port = 8200;
@@ -34,8 +32,7 @@ import * as Database from "./Database";
                 default: 
                     error();
             } 
-        }
-        
+        } 
     }      
         
         function insert(query: AssocStringString, _response: Http.ServerResponse): void {
@@ -65,7 +62,7 @@ import * as Database from "./Database";
             for (let i: number = 0; i < studi.length; i++) {     
             line += studi[i].matrikel + ": ";
             line += studi[i].studiengang + ", " + studi[i].name + ", " + studi[i].firstname + ", " + studi[i].age + " Jahre ";
-            line += studi[i].gender ? "(M)" : "(F)" ; 
+            line += studi[i].gender ? "(M)" : "(F)"; 
                 
             }  
             respond(_response, line);
