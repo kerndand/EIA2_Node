@@ -26,14 +26,15 @@ import * as Database from "./Database";
                     break;
                     
                 case "search":
-                    search(query, _response);
+//                    search(query, _response);
                     break;
                
                 default: 
                     error();
             } 
         } 
-    }      
+    }    
+  
         
         function insert(query: AssocStringString, _response: Http.ServerResponse): void {
             let obj: Studi = JSON.parse(query["data"]);
@@ -69,17 +70,17 @@ import * as Database from "./Database";
             });
         } 
         
-        function search(query: AssocStringString, _response: Http.ServerResponse): void {
-            let studi: Studi = studiHomoAssoc[query["searchFor"]];
-            if (studi) {
-                let line: string = query["searchFor"] + ": ";
-                line += studi.studiengang + ", " + studi.name + ", " + studi.firstname + ", " + studi.age + " Jahre ";
-                line += studi.gender ? "(M)" : "(F)";
-                _response.write(line);
-            } else {
-                _response.write("No Match");    
-            }    
-        }
+//        function search(query: AssocStringString, _response: Http.ServerResponse): void {
+//            let studi: Studi = studiHomoAssoc[query["searchFor"]];
+//            if (studi) {
+//                let line: string = query["searchFor"] + ": ";
+//                line += studi.studiengang + ", " + studi.name + ", " + studi.firstname + ", " + studi.age + " Jahre ";
+//                line += studi.gender ? "(M)" : "(F)";
+//                _response.write(line);
+//            } else {
+//                _response.write("No Match");    
+//            }    
+//        }
         
         function error(): void {
             alert("Error"); 
