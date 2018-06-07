@@ -54,7 +54,7 @@ function insert(query, _response) {
 }
 function refresh(_response) {
     Database.findAll(function (json) {
-        _response.write(json);
+        respond(_response, json);
     });
     //            let line: string = matrikel + ": ";
     //            line += studi.studiengang + ", " + studi.name + ", " + studi.firstname + ", " + studi.age + " Jahre ";
@@ -75,5 +75,8 @@ function search(query, _response) {
 }
 function error() {
     alert("Error");
+}
+function respond(_response, _text) {
+    _response.write(_text);
 }
 //# sourceMappingURL=Server.js.map

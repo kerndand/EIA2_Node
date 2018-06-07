@@ -63,7 +63,7 @@ import * as Database from "./Database";
 
         function refresh(_response: Http.ServerResponse): void {
             Database.findAll(function(json: string): void {
-                _response.write(json);
+                respond(_response, json);
             });
 //            let line: string = matrikel + ": ";
 //            line += studi.studiengang + ", " + studi.name + ", " + studi.firstname + ", " + studi.age + " Jahre ";
@@ -88,3 +88,6 @@ import * as Database from "./Database";
             alert("Error"); 
         }
     
+function respond(_response: Http.ServerResponse, _text: string): void {
+    _response.write(_text);
+}
