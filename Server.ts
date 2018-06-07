@@ -65,6 +65,7 @@ import * as Database from "./Database";
             line += studi[i].studiengang + ", " + studi[i].name + ", " + studi[i].firstname + ", " + studi[i].age + " Jahre ";
             line += studi[i].gender ? "(M)" : "(F)" + "\n"; 
             }  
+            
             respond(_response, line);
             });
             
