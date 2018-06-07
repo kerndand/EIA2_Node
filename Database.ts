@@ -45,6 +45,8 @@ export function findAll(_callback: Function): void {
         if (_e)
             _callback("Error" + _e);
         else
-            _callback(studentArray);
+            for (let i: number = 0; i < studentArray.length; i++) {
+            _callback(studentArray[i]);
+             }
     }
 }
