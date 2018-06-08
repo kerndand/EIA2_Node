@@ -41,7 +41,7 @@ function findAll(_callback) {
 }
 exports.findAll = findAll;
 function findStudent(searchedMatrikel, _callback) {
-    var myCursor = students.findOne({ matrikel: searchedMatrikel }, prepareStudent);
+    students.findOne({ matrikel: searchedMatrikel }, prepareStudent);
     function prepareStudent(_e, myCursor) {
         if (_e) {
             _callback("Error" + _e);
