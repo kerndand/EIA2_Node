@@ -49,7 +49,7 @@ export function findAll(_callback: Function): void {
 }
 
 export function findStudent(searchedMatrikel: number, _callback: Function): void {    
-    var myCursor = students.findOne({"matrikel": searchedMatrikel}, prepareStudent);
+    var myCursor = students.findOne({matrikel: searchedMatrikel}, prepareStudent);
     
     function prepareStudent(_e: Mongo.MongoError, myCursor: Studi): void {
         if (_e) {
@@ -58,7 +58,7 @@ export function findStudent(searchedMatrikel: number, _callback: Function): void
         
         if (myCursor) {
             _callback(JSON.stringify(myCursor));
-        } if (!myCursor) {
+        } else {
             _callback("No Match");
         }
             
