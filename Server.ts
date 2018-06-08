@@ -35,7 +35,6 @@ import * as Database from "./Database";
                     error();
             } 
         }
-    _response.end(); 
     }      
         
         function insert(query: AssocStringString, _response: Http.ServerResponse): void {
@@ -78,4 +77,5 @@ import * as Database from "./Database";
     
 function respond(_response: Http.ServerResponse, _text: string): void {
     _response.write(_text);
+    _response.end(); 
 }

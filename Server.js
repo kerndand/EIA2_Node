@@ -29,7 +29,6 @@ function handleRequest(_request, _response) {
                 error();
         }
     }
-    _response.end();
 }
 function insert(query, _response) {
     let obj = JSON.parse(query["data"]);
@@ -67,5 +66,6 @@ function error() {
 }
 function respond(_response, _text) {
     _response.write(_text);
+    _response.end();
 }
 //# sourceMappingURL=Server.js.map
