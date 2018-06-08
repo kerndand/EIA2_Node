@@ -58,7 +58,7 @@ function search(query, _response) {
     Database.findStudent(searchedMatrikel, function (json) {
         let line;
         for (let i = 0; i < json.length; i++) {
-            line += json[i];
+            line += json[i].matrikel + json[i].studiengang + json[i].name + json[i].firstname + json[i].gender ? "M" : "F";
         }
         respond(_response, line);
     });
