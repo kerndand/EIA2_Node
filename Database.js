@@ -49,7 +49,7 @@ function findStudent(searchedMatrikel, _callback) {
         if (myCursor) {
             _callback(JSON.stringify(myCursor));
         }
-        {
+        else {
             _callback("No Match");
         }
     }

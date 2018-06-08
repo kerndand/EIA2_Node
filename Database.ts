@@ -58,7 +58,7 @@ export function findStudent(searchedMatrikel: number, _callback: Function): void
         
         if (myCursor) {
             _callback(JSON.stringify(myCursor));
-        }  {
+        } else  {
             _callback("No Match");
         }
             
