@@ -46,10 +46,10 @@ function findStudent(searchedMatrikel, _callback) {
         if (_e) {
             _callback("Error" + _e);
         }
-        if (!myCursor) {
+        if (myCursor) {
             _callback(JSON.stringify(myCursor));
         }
-        else {
+        if (!myCursor) {
             _callback("No Match");
         }
     }
