@@ -49,16 +49,16 @@ export function findAll(_callback: Function): void {
 }
 
 export function findStudent(searchedMatrikel: number, _callback: Function): void {    
-    students.findOne({matrikel: searchedMatrikel}, prepareStudent);
+    students.findOne({"matrikel": searchedMatrikel}, prepareStudent);
     
-    function prepareStudent(_e: Mongo.MongoError, result: Studi): void {
+    function prepareStudent(_e: Mongo.MongoError, myCursor: Studi): void {
         if (_e) {
             _callback("Error" + _e);
         }
         
-        if (result) {
-            _callback(result);
-        } else {
+        if (myCursor) {
+            _callback(JSON.stringify(myCursor));
+        }  {
             _callback("No Match");
         }
             
