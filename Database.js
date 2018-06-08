@@ -42,12 +42,12 @@ function findAll(_callback) {
 exports.findAll = findAll;
 function findStudent(searchedMatrikel, _callback) {
     students.findOne({ matrikel: searchedMatrikel }, prepareStudent);
-    function prepareStudent(_e, myCursor) {
+    function prepareStudent(_e, result) {
         if (_e) {
             _callback("Error" + _e);
         }
-        if (myCursor) {
-            _callback(JSON.stringify(myCursor));
+        if (result) {
+            _callback(result);
         }
         else {
             _callback("No Match");
