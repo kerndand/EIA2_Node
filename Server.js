@@ -56,11 +56,7 @@ function refresh(_response) {
 function search(query, _response) {
     let searchedMatrikel = parseInt(query["searchedFor"]);
     Database.findStudent(searchedMatrikel, function (json) {
-        let line;
-        for (let i = 0; i < json.length; i++) {
-            line += json[i].matrikel + json[i].studiengang + json[i].name + json[i].firstname + json[i].gender ? "M" : "F";
-        }
-        respond(_response, line);
+        respond(_response, json);
     });
 }
 function error() {
