@@ -49,7 +49,7 @@ export function findAll(_callback: Function): void {
 }
 
 export function findStudent(searchedMatrikel: number, _callback: Function): void {    
-    var myCursor: Mongo.Cursor = students.find({matrikel: searchedMatrikel});
+    var myCursor: Mongo.Cursor = students.find({"matrikel": searchedMatrikel});
     myCursor.toArray();
     
     function prepareStudent(_e: Mongo.MongoError, searchedStudent: Studi[]): void {
