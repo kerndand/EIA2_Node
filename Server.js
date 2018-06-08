@@ -9,8 +9,6 @@ let server = Http.createServer();
 server.addListener("request", handleRequest);
 server.listen(port);
 function handleRequest(_request, _response) {
-    _response.setHeader("content-type", "text/html; charset=utf-8");
-    _response.setHeader("Access-Control-Allow-Origin", "*");
     console.log("Ich höre Stimmen!");
     let query = Url.parse(_request.url, true).query;
     console.log(query["command"]);
@@ -65,6 +63,8 @@ function error() {
     alert("Error");
 }
 function respond(_response, _text) {
+    _response.setHeader("content-type", "text/html; charset=utf-8");
+    _response.setHeader("Access-Control-Allow-Origin", "*");
     _response.write(_text);
     _response.end();
 }

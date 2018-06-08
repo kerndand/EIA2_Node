@@ -41,13 +41,13 @@ function findAll(_callback) {
 }
 exports.findAll = findAll;
 function findStudent(searchedMatrikel, _callback) {
-    var cursor = students.find({ "matrikel": searchedMatrikel });
-    cursor.toArray(prepareStudent);
+    var myCursor = students.find({ matrikel: searchedMatrikel });
+    myCursor.toArray();
     function prepareStudent(_e, searchedStudent) {
         if (_e)
             _callback("Error" + _e);
         else
-            _callback(JSON.stringify(searchedStudent[0]));
+            _callback(JSON.stringify(searchedStudent));
     }
 }
 exports.findStudent = findStudent;
