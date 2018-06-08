@@ -40,7 +40,7 @@ function findAll(_callback) {
     }
 }
 exports.findAll = findAll;
-function findStudent(_callback, searchedMatrikel) {
+function findStudent(searchedMatrikel, _callback) {
     var cursor = students.find({ "matrikel": searchedMatrikel });
     cursor.toArray(prepareStudent);
     function prepareStudent(_e, searchedStudent) {

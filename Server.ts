@@ -64,9 +64,9 @@ import * as Database from "./Database";
         
         function search(query: AssocStringString, _response: Http.ServerResponse): void {
             let searchedMatrikel: number = parseInt(query["searchedFor"]);
-            Database.findStudent(function (json: string): void {
+            Database.findStudent(searchedMatrikel, function (json: string): void {
             respond(_response, json);    
-            }, searchedMatrikel);
+            });
         }
         
         function error(): void {
