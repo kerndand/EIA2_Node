@@ -36,12 +36,12 @@ function findAll(_callback) {
         if (_e)
             _callback("Error" + _e);
         else
-            _callback(studentArray);
+            _callback(JSON.stringify(studentArray));
     }
 }
 exports.findAll = findAll;
 function findStudent(searchedMatrikel, _callback) {
-    students.findOne({ "matrikel": searchedMatrikel }, prepareStudent);
+    var myCursor = students.findOne({ "matrikel": searchedMatrikel }, prepareStudent);
     function prepareStudent(_e, myCursor) {
         if (_e) {
             _callback("Error" + _e);
