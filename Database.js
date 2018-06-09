@@ -36,7 +36,7 @@ function findAll(_callback) {
         if (_e) {
             _callback("Error" + _e);
         }
-        if (studentArray) {
+        else {
             let line;
             for (let i = 0; i < studentArray.length; i++) {
                 line += studentArray[i].matrikel + ": " + studentArray[i].studiengang + ", " + studentArray[i].name + ", " + studentArray[i].firstname + ", " + studentArray[i].age + ", ";
@@ -44,9 +44,6 @@ function findAll(_callback) {
                 line += "\n";
             }
             _callback(line);
-        }
-        else {
-            _callback("No Students found");
         }
     }
 }
