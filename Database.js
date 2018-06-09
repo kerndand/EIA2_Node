@@ -43,7 +43,7 @@ function findAll(_callback) {
                 line += studentArray[i].gender ? "(M)" : "(F)";
                 line += "\n";
             }
-            _callback(JSON.stringify(line));
+            _callback(line);
         }
     }
 }

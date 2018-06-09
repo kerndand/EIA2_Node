@@ -49,7 +49,7 @@ export function findAll(_callback: Function): void {
                 line += studentArray[i].gender ? "(M)" : "(F)";
                 line += "\n";
             }
-            _callback(JSON.stringify(line));
+            _callback(line);
         }
     }
 }
