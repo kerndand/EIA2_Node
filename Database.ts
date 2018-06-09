@@ -49,6 +49,7 @@ export function findAll(_callback: Function): void {
             line += studentArray[i].matrikel + ": " + studentArray[i].studiengang + ", " + studentArray[i].name + ", " + studentArray[i].firstname + ", " + studentArray[i].age + ", "; 
             line += studentArray[i].gender ? "(M)" : "(F)";
             }
+            
             _callback(line);
         }
     }
