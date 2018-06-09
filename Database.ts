@@ -49,14 +49,15 @@ export function findAll(_callback: Function): void {
 }
 
 export function findStudent(searchedMatrikel: number, _callback: Function): void {    
-    var myCursor = students.findOne({"matrikel": searchedMatrikel}, prepareStudent);
+    var myCursor: Mongo.Cursor = students.find({"matrikel": searchedMatrikel}).limit(1);
+    myCursor.toArray(prepareStudent);
     
-    function prepareStudent(_e: Mongo.MongoError, myCursor: Studi): void {
+    function prepareStudent(_e: Mongo.MongoError, students: Studi[]): void {
         if (_e) {
             _callback("Error" + _e);
         }
         
-        if (myCursor) {
+        if (students.length == 1) {
             _callback(JSON.stringify(myCursor));
         } else {
             _callback("No Match");
