@@ -33,9 +33,6 @@ function findAll(_callback) {
     var cursor = students.find();
     cursor.toArray(prepareAnswer);
     function prepareAnswer(_e, studentArray) {
-        if (_e) {
-            _callback("Error" + _e);
-        }
         if (studentArray) {
             let line;
             for (let i = 0; i < studentArray.length; i++) {

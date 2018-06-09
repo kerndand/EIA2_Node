@@ -40,9 +40,6 @@ export function findAll(_callback: Function): void {
     cursor.toArray(prepareAnswer);
 
     function prepareAnswer(_e: Mongo.MongoError, studentArray: Studi[]): void {
-        if (_e) {
-            _callback("Error" + _e);
-        } 
         if (studentArray) {
             let line: string;
             for (let i: number = 0; i < studentArray.length; i++) {
@@ -52,7 +49,8 @@ export function findAll(_callback: Function): void {
             }
             
             _callback(line);
-        }
+        } 
+        
     }
 }
 
