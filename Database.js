@@ -33,11 +33,11 @@ function findAll(_callback) {
     var cursor = students.find();
     cursor.toArray(prepareAnswer);
     function prepareAnswer(_e, studentArray) {
+        let line;
         if (_e) {
             _callback("Error" + _e);
         }
         else {
-            let line;
             for (let i = 0; i < studentArray.length; i++) {
                 line += studentArray[i].matrikel + ": " + studentArray[i].studiengang + ", " + studentArray[i].name + ", " + studentArray[i].firstname + ", " + studentArray[i].age + ", ";
                 line += studentArray[i].gender ? "(M)" : "(F)";
