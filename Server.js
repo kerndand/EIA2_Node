@@ -54,7 +54,7 @@ function refresh(_response) {
     });
 }
 function search(query, _response) {
-    let searchedMatrikel = parseInt(query["searchedFor"]);
+    let searchedMatrikel = parseInt(query["searchFor"]);
     Database.findStudent(searchedMatrikel, function (json) {
         respond(_response, json);
     });
