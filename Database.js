@@ -30,9 +30,8 @@ function handleInsert(_e) {
     console.log("Database insertion returned -> " + _e);
 }
 function findAll(_callback) {
-    var cursor = students.find({}, null);
-    cursor.toArray(prepareAnswer);
-    function prepareAnswer(_e, studentArray) {
+    var cursor = students.find();
+    cursor.toArray(function (_e, studentArray) {
         if (_e) {
             _callback("Error" + _e);
         }
@@ -43,9 +42,9 @@ function findAll(_callback) {
                 line += studentArray[i].gender ? "(M)" : "(F)";
                 line += "\n";
             }
-            _callback(line);
+            _callback(null, line);
         }
-    }
+    });
 }
 exports.findAll = findAll;
 function findStudent(searchedMatrikel, _callback) {

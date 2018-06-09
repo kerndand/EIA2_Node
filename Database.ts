@@ -36,10 +36,8 @@ function handleInsert(_e: Mongo.MongoError): void {
 
 
 export function findAll(_callback: Function): void {
-    var cursor: Mongo.Cursor = students.find({}, null);
-    cursor.toArray(prepareAnswer);
-
-    function prepareAnswer(_e: Mongo.MongoError, studentArray: Studi[]): void {
+    var cursor: Mongo.Cursor = students.find();
+    cursor.toArray(function(_e: Mongo.MongoError, studentArray: Studi[]): void {
         if (_e) {
             _callback("Error" + _e);
         } else {
@@ -50,9 +48,9 @@ export function findAll(_callback: Function): void {
                 line += "\n";
             }
 
-            _callback(line);
+            _callback(null, line);
         }
-    }
+    });
 }
 
 export function findStudent(searchedMatrikel: number, _callback: Function): void {
