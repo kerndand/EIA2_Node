@@ -36,14 +36,14 @@ function findAll(_callback) {
         if (_e) {
             _callback("Error" + _e);
         }
-        if (studentArray.length > 0) {
+        else {
             let line;
             for (let i = 0; i < studentArray.length; i++) {
                 line += studentArray[i].matrikel + ": " + studentArray[i].studiengang + ", " + studentArray[i].name + ", " + studentArray[i].firstname + ", " + studentArray[i].age + ", ";
                 line += studentArray[i].gender ? "(M)" : "(F)";
                 line += "\n";
             }
-            _callback(line);
+            _callback("Studenten" + line);
         }
     }
 }
