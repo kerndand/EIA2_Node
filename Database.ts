@@ -58,7 +58,7 @@ export function findStudent(searchedMatrikel: number, _callback: Function): void
         }
 
         if (studi) {
-            _callback(JSON.stringify(studi));
+            _callback(studi.matrikel + ": " + studi.studiengang + ", " + studi.name + ", " + studi.firstname + ", " + studi.age + ", " + studi.gender ? "(M)" : "(F)");
         } else {
             _callback("No Match");
         }
