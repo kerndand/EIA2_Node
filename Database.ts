@@ -50,7 +50,7 @@ export function findAll(_callback: Function): void {
                 line += "\n";
             }
 
-            _callback("Studenten" + line);
+            _callback(null + line);
         }
     }
 }
