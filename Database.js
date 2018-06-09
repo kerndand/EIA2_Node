@@ -36,6 +36,9 @@ function findAll(_callback) {
         if (_e) {
             _callback("Error" + _e);
         }
+        if (undefined) {
+            _callback(null);
+        }
         else {
             let line;
             for (let i = 0; i < studentArray.length; i++) {
@@ -43,7 +46,7 @@ function findAll(_callback) {
                 line += studentArray[i].gender ? "(M)" : "(F)";
                 line += "\n";
             }
-            _callback(line, null);
+            _callback(line);
         }
     }
 }
