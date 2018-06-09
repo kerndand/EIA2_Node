@@ -31,7 +31,8 @@ function handleInsert(_e) {
 }
 function findAll(_callback) {
     var cursor = students.find();
-    cursor.toArray(function (_e, studentArray) {
+    cursor.toArray(prepareAnswer);
+    function prepareAnswer(_e, studentArray) {
         if (_e) {
             _callback("Error" + _e);
         }
@@ -41,10 +42,10 @@ function findAll(_callback) {
                 line += studentArray[i].matrikel + ": " + studentArray[i].studiengang + ", " + studentArray[i].name + ", " + studentArray[i].firstname + ", " + studentArray[i].age + ", ";
                 line += studentArray[i].gender ? "(M)" : "(F)";
                 line += "\n";
+                _callback(line);
             }
-            _callback(null, line);
         }
-    });
+    }
 }
 exports.findAll = findAll;
 function findStudent(searchedMatrikel, _callback) {

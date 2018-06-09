@@ -37,7 +37,9 @@ function handleInsert(_e: Mongo.MongoError): void {
 
 export function findAll(_callback: Function): void {
     var cursor: Mongo.Cursor = students.find();
-    cursor.toArray(function(_e: Mongo.MongoError, studentArray: Studi[]): void {
+    cursor.toArray(prepareAnswer);
+
+    function prepareAnswer(_e: Mongo.MongoError, studentArray: Studi[]): void {
         if (_e) {
             _callback("Error" + _e);
         } else {
@@ -46,11 +48,12 @@ export function findAll(_callback: Function): void {
                 line += studentArray[i].matrikel + ": " + studentArray[i].studiengang + ", " + studentArray[i].name + ", " + studentArray[i].firstname + ", " + studentArray[i].age + ", ";
                 line += studentArray[i].gender ? "(M)" : "(F)";
                 line += "\n";
+                _callback(line);
             }
 
-            _callback(null, line);
+            
         }
-    });
+    }
 }
 
 export function findStudent(searchedMatrikel: number, _callback: Function): void {
