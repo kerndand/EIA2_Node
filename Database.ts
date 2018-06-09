@@ -40,19 +40,16 @@ export function findAll(_callback: Function): void {
     cursor.toArray(prepareAnswer);
 
     function prepareAnswer(_e: Mongo.MongoError, studentArray: Studi[]): void {
-        if (_e) {
-            _callback("Error" + _e);
-        }
-        if (undefined) {
-            _callback(null);    
-        } 
-        else {
-            let line: string;
-            for (let i: number = 0; i < studentArray.length; i++) {
-            line += studentArray[i].matrikel + ": " + studentArray[i].studiengang + ", " + studentArray[i].name + ", " + studentArray[i].firstname + ", " + studentArray[i].age + ", "; 
+        let line: string;
+        for (let i: number = 0; i < studentArray.length; i++) {
+            line += studentArray[i].matrikel + ": " + studentArray[i].studiengang + ", " + studentArray[i].name + ", " + studentArray[i].firstname + ", " + studentArray[i].age + ", ";
             line += studentArray[i].gender ? "(M)" : "(F)";
             line += "\n";
-            }
+        }
+
+        if (_e) {
+            _callback("Error" + _e);
+        } else {
             _callback(line);
         }
     }
@@ -61,14 +58,14 @@ export function findAll(_callback: Function): void {
 export function findStudent(searchedMatrikel: number, _callback: Function): void {
     var myCursor: Mongo.Cursor = students.find({ "matrikel": searchedMatrikel }).limit(1);
     myCursor.next(prepareStudent);
-    
+
     function prepareStudent(_e: Mongo.MongoError, studi: Studi): void {
         if (_e) {
             _callback("Error" + _e);
         }
 
         if (studi) {
-            let line: string = studi.matrikel + ": " + studi.studiengang + ", " + studi.name + ", " + studi.firstname + ", " + studi.age + ", "; 
+            let line: string = studi.matrikel + ": " + studi.studiengang + ", " + studi.name + ", " + studi.firstname + ", " + studi.age + ", ";
             line += studi.gender ? "(M)" : "(F)";
             _callback(line);
         } else {
