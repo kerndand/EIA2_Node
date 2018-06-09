@@ -42,8 +42,8 @@ function findAll(_callback) {
                 line += studentArray[i].matrikel + ": " + studentArray[i].studiengang + ", " + studentArray[i].name + ", " + studentArray[i].firstname + ", " + studentArray[i].age + ", ";
                 line += studentArray[i].gender ? "(M)" : "(F)";
                 line += "\n";
-                _callback(line);
             }
+            _callback(line);
         }
     }
 }
