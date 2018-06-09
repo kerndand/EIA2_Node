@@ -42,12 +42,17 @@ function findAll(_callback) {
 exports.findAll = findAll;
 function findStudent(searchedMatrikel, _callback) {
     var myCursor = students.find({ "matrikel": searchedMatrikel }).limit(1);
-    var check = myCursor.hasNext() ? myCursor.next : null;
-    if (check) {
-        _callback(JSON.stringify(myCursor));
-    }
-    else {
-        _callback("No Match");
+    myCursor.next(prepareStudent);
+    function prepareStudent(_e, myCursor) {
+        if (_e) {
+            _callback("Error" + _e);
+        }
+        if (myCursor) {
+            _callback(JSON.stringify(myCursor));
+        }
+        else {
+            _callback("No Match");
+        }
     }
 }
 exports.findStudent = findStudent;

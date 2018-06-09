@@ -44,19 +44,24 @@ export function findAll(_callback: Function): void {
             _callback("Error" + _e);
         else
             _callback(JSON.stringify(studentArray));
-
+            
     }
 }
 
-export function findStudent(searchedMatrikel: number, _callback: Function): void {
-    var myCursor: Mongo.Cursor = students.find({ "matrikel": searchedMatrikel }).limit(1);
-    var check = myCursor.hasNext() ? myCursor.next : null;
-
-    if (check) {
-        _callback(JSON.stringify(myCursor));
-    } else {
-        _callback("No Match");
+export function findStudent(searchedMatrikel: number, _callback: Function): void {    
+    var myCursor: Mongo.Cursor = students.find({"matrikel": searchedMatrikel}).limit(1);
+    myCursor.next(prepareStudent);
+    
+    function prepareStudent(_e: Mongo.MongoError, myCursor: Studi): void {
+        if (_e) {
+            _callback("Error" + _e);
+        }
+        
+        if (myCursor) {
+            _callback(JSON.stringify(myCursor));
+        } else {
+            _callback("No Match");
+        }
+            
     }
-
-
 }
