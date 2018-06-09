@@ -30,7 +30,7 @@ function handleInsert(_e) {
     console.log("Database insertion returned -> " + _e);
 }
 function findAll(_callback) {
-    var cursor = students.find({});
+    var cursor = students.find();
     cursor.toArray(prepareAnswer);
     function prepareAnswer(_e, studentArray) {
         if (_e) {
@@ -43,7 +43,7 @@ function findAll(_callback) {
                 line += studentArray[i].gender ? "(M)" : "(F)";
                 line += "\n";
             }
-            _callback(line);
+            _callback(null, line);
         }
     }
 }
