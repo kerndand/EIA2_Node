@@ -25,13 +25,8 @@ function handleConnect(_e: Mongo.MongoError, _db: Mongo.Db): void {
     }
 }
 
-export function insert(_doc: Studi, _callback: Function): void {
-    if (students.findOne({ "matrikel": _doc.matrikel })) {
-        _callback("Student already exists");
-    } else {
-        students.insertOne(_doc, handleInsert);
-        _callback("Daten empfangen");
-    }
+export function insert(_doc: Studi): void {
+    students.insertOne(_doc, handleInsert);
 }
 
 function handleInsert(_e: Mongo.MongoError): void {
@@ -53,7 +48,7 @@ export function findAll(_callback: Function): void {
                 line += "\n";
             }
             _callback(line);
-        }
+        } 
     }
 }
 
