@@ -52,8 +52,9 @@ import * as Database from "./Database";
                 gender: _gender,
                 studiengang: _studiengang
             };  
-            Database.insert(studi);
-            respond(_response, "Daten empfangen");
+            Database.insert(studi, function(json: string): void {
+            respond(_response, json);
+            });
             }
 
         function refresh(_response: Http.ServerResponse): void {

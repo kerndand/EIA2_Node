@@ -22,8 +22,14 @@ function handleConnect(_e, _db) {
         students = db.collection("students");
     }
 }
-function insert(_doc) {
-    students.insertOne(_doc, handleInsert);
+function insert(_doc, _callback) {
+    if (students.find({ "matrikel": _doc.matrikel })) {
+        _callback("Student already exists");
+    }
+    else {
+        students.insertOne(_doc, handleInsert);
+        _callback("Daten empfangen");
+    }
 }
 exports.insert = insert;
 function handleInsert(_e) {

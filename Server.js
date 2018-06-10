@@ -45,8 +45,9 @@ function insert(query, _response) {
         gender: _gender,
         studiengang: _studiengang
     };
-    Database.insert(studi);
-    respond(_response, "Daten empfangen");
+    Database.insert(studi, function (json) {
+        respond(_response, json);
+    });
 }
 function refresh(_response) {
     Database.findAll(function (json) {
