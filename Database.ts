@@ -15,7 +15,6 @@ if (process.env.NODE_ENV == "production") {
 // handleConnect wird aufgerufen wenn der Versuch, die Connection zur Datenbank herzustellen, erfolgte
 Mongo.MongoClient.connect(databaseURL, handleConnect);
 
-
 function handleConnect(_e: Mongo.MongoError, _db: Mongo.Db): void {
     if (_e)
         console.log("Unable to connect to database, error: ", _e);
@@ -33,7 +32,6 @@ export function insert(_doc: Studi): void {
 function handleInsert(_e: Mongo.MongoError): void {
     console.log("Database insertion returned -> " + _e);
 }
-
 
 export function findAll(_callback: Function): void {
     var cursor: Mongo.Cursor = students.find();
@@ -70,6 +68,5 @@ export function findStudent(searchedMatrikel: number, _callback: Function): void
         } else {
             _callback("No Match");
         }
-
     }
 }
