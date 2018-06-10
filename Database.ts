@@ -26,7 +26,7 @@ function handleConnect(_e: Mongo.MongoError, _db: Mongo.Db): void {
 }
 
 export function insert(_doc: Studi, _callback: Function): void {
-    if (students.find({ "matrikel": _doc.matrikel })) {
+    if (students.findOne({ "matrikel": _doc.matrikel })) {
         _callback("Student already exists");
     } else {
         students.insertOne(_doc, handleInsert);

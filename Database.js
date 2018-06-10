@@ -23,7 +23,7 @@ function handleConnect(_e, _db) {
     }
 }
 function insert(_doc, _callback) {
-    if (students.find({ "matrikel": _doc.matrikel })) {
+    if (students.findOne({ "matrikel": _doc.matrikel })) {
         _callback("Student already exists");
     }
     else {
